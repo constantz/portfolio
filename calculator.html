@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+
+</style>
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Rekenmachine</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <style>
+        .content{
+		    margin-top: 50px;
+        }
+        #input{
+            width: 275px;
+            height: 50px;
+            font-size: 22pt;
+            border-color: gray;
+            border-style: solid;
+            border-radius: 5px;
+        }
+        #numberone{
+            height: 50px;
+            font-size: 22pt;
+        }
+    </style>
+</head>
+<body>
+<div class="container content">
+    <h1>Rekenmachine</h1>
+    <input id="input" type="text" disabled>
+    </br></br>
+    <button type="button" class="btn hookleft btn-outline-primary btn-sm">&nbsp;(&nbsp;</button>
+    <button type="button" class="btn hookright btn-outline-primary btn-sm">&nbsp;)&nbsp;</button>
+    <button type="button" class="btn sqroot btn-outline-secondary btn-sm">&nbsp;&Sqrt;&nbsp;</button>
+    <button type="button" class="btn squared btn-outline-secondary btn-sm">&nbsp;<small>x<sup>2</sup></small>&nbsp;</button>
+    <button type="button" class="btn sto btn-outline-success btn-sm">&nbsp;STO&nbsp;</button>
+    <button type="button" class="btn rcl btn-outline-success btn-sm">&nbsp;RCL&nbsp;</button>
+    </br></br>
+    <button class="btn knop btn-outline-primary btn-lg">1</button>
+    <button class="btn knop btn-outline-primary btn-lg">2</button>
+    <button class="btn knop btn-outline-primary btn-lg">3</button>
+    <button class="btn del btn-outline-danger btn-lg">Del</button>
+    <button class="btn res btn-outline-danger btn-lg">AC</button>
+    </br><br/>
+    <button class="btn knop btn-outline-primary btn-lg">4</button>
+    <button class="btn knop btn-outline-primary btn-lg">5</button>
+    <button class="btn knop btn-outline-primary btn-lg">6</button>
+    <button class="btn add op btn-outline-secondary btn-lg">+</button>
+    <button class="btn sub op btn-outline-secondary btn-lg">-</button>
+    </br><br/>
+    <button class="btn knop btn-outline-primary btn-lg">7</button>
+    <button class="btn knop btn-outline-primary btn-lg">8</button>
+    <button class="btn knop btn-outline-primary btn-lg">9</button>
+    <button class="btn div op btn-outline-secondary btn-lg">/</button>
+    <button class="btn mul op btn-outline-secondary btn-lg">x</button>
+    </br></br>
+    <button class="btn knop btn-outline-primary btn-lg">0</button>
+    <button class="btn dot btn-outline-primary btn-lg">.</button>
+    <button class="btn plusmn btn-outline-primary btn-lg">&#177</button>
+
+    <button id="calc" class="btn op btn-outline-secondary btn-lg">&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </br>
+    <p></p>
+    <p id="numberone"></p>
+    <p id="numbertwo"></p>
+</div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        var storage = null;
+        var num1 = null;
+        var result = null;
+        var dotcheck = true;
+        var resultstring = "";  //string voor de uitvoer, ziet er 'leuker' uit
+        var rekenstring = "";  //rekenstring gebruiken voor het berekeken, met 'echte' operators (* ipv x bijv.)
+        var opPressed = "false";    //operator pressed
+        $('#input').val("");
+        
+        $('.res').click(function(){
+            reset();
+        });
+        
+        function reset(){
+            $('#input').val("");
+            num1 = null;
+            result = null;
+            $('#numberone').text("");
+            dotcheck = true;
+            resultstring = "";
+            rekenstring = "";
+        };
+        
+        $('.del').click(function(){
+            $('#input').val("");
+        });
+
+        $('.dot').click(function(){
+            if (dotcheck){
+                $('#input').val($('#input').val() + this.innerHTML);
+                dotcheck = false; //je kunt maar één keer een dot invoeren
+            }
+        });
+
+        $('.knop').click(function(){
+            if (opPressed) $('#input').val("");
+            $('#input').val($('#input').val() + this.innerHTML);
+            opPressed = false; 
+        });
+
+        $('.hookleft').click(function(){
+            if (opPressed) $('#input').val("");
+            $('#input').val($('#input').val() + ' ( ');
+            opPressed = false;
+        });
+
+        $('.hookright').click(function(){
+            if (opPressed) $('#input').val("");
+            $('#input').val($('#input').val() + ' ) ');
+            opPressed = false;
+        });
+
+        $('.sto').click(function(){
+            storage = $('#input').val();
+        });
+
+        $('.rcl').click(function(){
+            $('#input').val(storage);
+        });
+
+        $('.plusmn').click(function(){
+            if ($('#input').val().indexOf('-') > -1) {
+                $('#input').val($('#input').val().replace('-', ''));
+            }
+            else {
+                $('#input').val("-" + $('#input').val());
+            };
+        });
+       
+        $('.squared').click(function(){
+            dotcheck = true;
+            num1 = $('#input').val();
+            if (num1 != ""){
+                var sq = num1*num1;
+                $('#input').val(sq);
+                opPressed = true;
+            }
+        });
+
+        $('.sqroot').click(function(){
+            dotcheck = true;
+            num1 = $('#input').val();
+            if (num1 != ""){
+                var rt = Math.sqrt(num1);
+                $('#input').val(rt);
+                opPressed = true;
+            }
+        });
+
+        $('.add').click(function(){
+            dotcheck = true;
+            num1 = $('#input').val();    
+            if (num1 != "") {
+                resultstring = resultstring + num1 + " + ";
+                rekenstring = rekenstring + num1 + " + ";
+                $('#numberone').text(resultstring); 
+                opPressed = true;
+            }    
+        });
+
+        $('.sub').click(function(){
+            dotcheck = true;
+            num1 = $('#input').val();
+            if (num1 != "") {
+                resultstring = resultstring + num1 + " - ";
+                rekenstring = rekenstring + num1 + " - ";
+                $('#numberone').text(resultstring);
+                opPressed = true;
+            }    
+        });
+
+        $('.div').click(function(){
+            dotcheck = true;
+            num1 = $('#input').val();
+            if (num1 != "") {
+                resultstring = resultstring + num1 + " : ";
+                rekenstring = rekenstring + num1 + " / ";
+                $('#numberone').text(resultstring);
+                opPressed = true;  
+            }       
+        });
+
+        $('.mul').click(function(){
+            dotcheck = true;
+            num1 = $('#input').val();
+            if (num1 != "" ) {
+                resultstring = resultstring + num1 + " x ";
+                rekenstring = rekenstring + num1 + " * ";
+                $('#numberone').text(resultstring);
+                opPressed = true;
+            }
+        });
+
+        $('#calc').click(function(){
+            num1 = $('#input').val();
+            if (num1 != ""){
+                resultstring = resultstring + num1 + " = ";
+                rekenstring = rekenstring + num1;
+                result = eval(rekenstring);
+                $('#numberone').text(resultstring + result);
+                $('#input').val(result);
+                resultstring = "";
+                rekenstring = "";
+                opPressed = true;
+            }
+        });
+    </script>
+</body>
+</html>

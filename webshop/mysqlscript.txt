@@ -1,0 +1,7 @@
+mysql> create table bestellingen (
+    -> id int not null auto_increment primary key,
+    -> email varchar(255) not null,
+    -> productid int,
+    -> foreign key (productid) references producten(id),
+    -> tebetalen decimal(5,2) not null
+    -> );

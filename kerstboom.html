@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<center><div id="kerstboom"></div>
+	<p>Merry Christmas and a Happy New Year!</p>
+	</center>
+<script>
+	var outputstring = ""; 
+	for(var i1 = 1; i1 < 5; i1++){ 
+		for(var i2 = (i1+1); i2 < (i1*3); i2 = i2+1){ 
+			var s1 = "";		
+			for(var i3 = (i1+i2+5); i3 < (i2*6); i3=i3+2)
+				s1 = s1 + Math.floor(Math.random()*2);
+			outputstring = outputstring + s1 + '<br>';
+			
+		}
+	}
+	document.getElementById("kerstboom").innerHTML = outputstring; 
+</script>
+</body>
+</html>

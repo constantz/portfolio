@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+	<!-- Animate on scroll  -->
+	<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+	
     <link rel="stylesheet" href="portfolio.css">
+	
+    
     <title>Portfolio CZ</title>
 </head>
 <body>
@@ -17,35 +22,53 @@
         <p>Portfolio van Constant Zwijnenberg, in ontwikkeling....</p>
     </div>
     <div class="container">
-        
+        <br><br><br><br><br><br><br><br>
         <ul class="list-unstyled">
             <li class="media">
-                <a href="https://cgz-test.herokuapp.com/">
-                    <img class="mr-3" src="contactlijst.jpg" alt="Contactlijst">
-                </a>
-                <div class="media-body">
+				<div data-aos="fade-right">
+					<a href="contactlist/index.html">
+						<img class="mr-3" src="contactlijst.jpg" alt="Contactlijst">
+					</a>
+				</div>
+                <div class="media-body" data-aos="fade-left">
                     <h5 class="mt-0 mb-1">Contactenlijst</h5>
                           Eenvoudige, functionele contactenlijst in HTML, CSS en JavaScript
                 </div>
             </li>
             <br><br>
             <li class="media">
-                <a href="https://cgz-calc1.herokuapp.com/">
-                    <img class="mr-3" src="calculator.jpg" alt="Calculator">
-                </a>    
-                <div class="media-body">
+				<div data-aos="fade-right">
+					<a href="calculator.html">
+						<img class="mr-3" src="calculator.jpg" alt="Calculator">
+					</a>
+				</div>
+                <div class="media-body" data-aos="fade-left">
                     <h5 class="mt-0 mb-1">Calculator</h5>
                         Een rekenmachine in HTML en JavaScript, gestyled met Bootstrap
                 </div>
             </li>
             <br><br>
             <li class="media">
-                <a href="https://kerstboom.herokuapp.com">
-                    <img class="mr-3" src="kerstboom.jpg" alt="Kerstboom">
-                </a>    
-                <div class="media-body">
+				<div data-aos="fade-right">
+					<a href="kerstboom.html">
+						<img class="mr-3" src="kerstboom.jpg" alt="Kerstboom">
+					</a>
+				</div>
+                <div class="media-body" data-aos="fade-left">
                     <h5 class="mt-0 mb-1">Kerstboom</h5>
-                        Kerstgroeten voor IT-ers, oefeningetje met loops in JavaScript - nu ook in <a href="https://kerstboomphp.herokuapp.com/">PHP</a>
+                        Kerstgroeten voor IT-ers, oefeningetje met loops in JavaScript - nu ook in <a href="kerstboomphp/index.php">PHP</a>
+                </div>
+            </li>
+            <br><br>
+            <li class="media">
+				<div data-aos="fade-right">
+					<a href="tafel/tafel.php">
+						<img class="mr-3" src="tafel.jpg" alt="Tafel">
+					</a>
+				</div>
+                <div class="media-body" data-aos="fade-left">
+                    <h5 class="mt-0 mb-1">Bestelformulier</h5>
+                        Een pagina in HTML en PHP, waarmee de gebruiker een houten tafel kan samenstellen en een prijsopgave krijgt
                 </div>
             </li>
         </ul>
@@ -56,5 +79,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<!-- animate on scroll script --> 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init(); </script>
 </body>
 </html>

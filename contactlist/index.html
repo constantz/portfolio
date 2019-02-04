@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contactenlijst</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/sketchy/bootstrap.min.css"-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	
+	<style type="text/css">
+    .content{
+		margin-top: 50px;
+		margin-bottom: 100px;
+    }
+	
+	</style>
+</head>
+<body onload="testLocalStorage()">
+<div class="content container">
+	<div>
+		<h1>Contactenlijst</h1>
+	</div>
+	<div>
+		<p class="lead">CodeGorilla Enschede</p>
+	</div>
+	<input id="myNewName" type="text" placeholder="nieuw">
+	<button onclick="voegIemandToe()">Voeg toe</button></br></br>
+	<!--button onclick="sorteerLijst()">A-Z Sorteer</button-->
+	<div style="float: right;">
+		<img src="https://pbs.twimg.com/profile_images/931190512731807746/yO8Lcr9H_400x400.jpg">
+	</div>
+	<ul id="myList">
+		<li>Alex Coenen</li>
+		<li>Anke Ebbelink</li>
+		<li>Bart Brinks</li>
+		<li>Bernard Goedendorp</li>
+		<li>Chelan Keijzer</li>
+		<li>Christiaan Tingen</li>
+		<li>Clemens Jongma</li>
+		<li>Constant Zwijnenberg</li>
+		<li>Cris Adamus</li>
+		<li>Dhiradj Gopal</li>
+		<li>Douglas Bowman</li>
+		<li>Eef Kuiper</li>
+		<li>Eline Eijkelenkamp</li>
+		<li>Frans Heijne</li>
+		<li>Gerd Ratsch</li>
+		<li>Jack Sleebos</li>
+		<li>Jan-Willem Haeke</li>
+		<li>Jeroen Wichers</li>
+		<li>Maarten Rengelink</li>
+		<li>Maha Almasri</li>
+		<li>Marcella Hadderingh</li>
+		<li>Martijn Blokhuis</li>
+		<li>Paul Ensing</li>
+		<li>Randalph van Velden</li>
+		<li>Rene Spijker</li>
+		<li>Richard Alp</li>
+		<li>Sebastiaan Prins</li>
+		<li>Semere Abraham</li>
+		<li>Semhar Michael</li>
+		<li>Simone Wildenborg</li>
+		<li>Stas Sinyakov</li>
+	</ul>
+	
+	</br>
+	<input id="myFilterBox" type="text" onkeyup="myFilterFunction()" placeholder="Filter..." >
+	<!--button onclick="storeList()">Lijst opslaan</button>
+	<button onclick="retrieveList()">Lijst ophalen</button-->
+	
+	<p><small>Als u door filteren de lijst terugbrengt tot &#233&#233n veld, kunt u dit veld wissen met de wis-knop</small></p></br>
+	<button onclick="wisIemand()">wis &#233&#233n veld</button></br>
+</div>
+
+
+	<script>
+		function testLocalStorage(){
+			if (localStorage.length != 0) retrieveList();
+		}
+		
+		function wisIemand(){
+			var ul, li, i, j, k, l;
+			ul = document.getElementById('myList');
+			li = ul.getElementsByTagName('LI');
+			j = 0;
+			for (i = 0; i < li.length; i++) {
+				if(li[i].style.display != "none"){j++; k = i;};
+			}
+			if (j!=1){alert("Er mag maar \351\351n veld geselecteerd zijn");
+				retrieveList();
+			}
+			else if (confirm("Weet u zeker dat u dit veld wilt wissen?")){
+				l = li[k];
+				ul.removeChild(l);
+				localStorage.clear();
+				for (i = 0; i < li.length; i++) {
+					li[i].style.display = "";
+					localStorage.setItem(i, li[i].innerHTML);
+					
+				}
+			}else for (i = 0; i < li.length; i++) {
+				li[i].style.display = "";
+				}
+			document.getElementById("myFilterBox").value = "";	
+		}
+			
+		function voegIemandToe(){
+			var sNaam = document.getElementById("myNewName").value;
+			if (sNaam != ""){
+				var node = document.createElement("LI");
+				var textnode = document.createTextNode(sNaam);
+				node.appendChild(textnode);
+				document.getElementById("myList").appendChild(node);   
+				document.getElementById("myNewName").value = "";
+				sorteerLijst();
+				storeList();
+				}
+				else alert("Invoer mag niet leeg zijn!");
+		}
+		
+		function myFilterFunction(){
+			var input, filter, ul, li, a, i, txtValue;
+			
+			input = document.getElementById('myFilterBox');
+			filter = input.value.toUpperCase();
+			ul = document.getElementById('myList');
+			li = ul.getElementsByTagName('LI');
+
+			for (i = 0; i < li.length; i++) {
+				txtValue = li[i].innerHTML;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					li[i].style.display = "";
+				} else {
+				li[i].style.display = "none";
+				}
+			}
+		}
+		
+		function sorteerLijst(){
+			var ul, i, switching, li, shouldSwitch; 
+			ul = document.getElementById("myList");
+			switching = true; 
+			while (switching) {	
+				switching = false;
+				li = ul.getElementsByTagName('LI');	
+				for (i = 0; i < (li.length - 1); i++) {	
+					shouldSwitch = false; 
+					if (li[i].innerHTML.toLowerCase() > li[i + 1].innerHTML.toLowerCase()) { 
+						shouldSwitch = true; 
+						break;
+					}
+				}
+				if (shouldSwitch){ 
+					li[i].parentNode.insertBefore(li[i + 1], li[i]);
+					switching = true;
+				}
+			}
+		}
+
+		function storeList(){
+			var ul, li;
+			ul = document.getElementById("myList");
+			li = ul.getElementsByTagName('LI');
+			for (i = 0; i < li.length; i++){
+				localStorage.setItem(i, li[i].innerHTML);	
+			}
+		}
+		
+		function retrieveList(){
+			var i, ul, li, sNaam, node, textnode;
+			ul = document.getElementById("myList");
+			li = ul.getElementsByTagName('LI');
+			while (li.length > 0){
+				li[0].parentNode.removeChild(li[0]);
+			}
+			for (i = 0; i < localStorage.length; i++){
+				sNaam = localStorage.getItem(i);
+				node = document.createElement("LI");
+				textnode = document.createTextNode(sNaam);
+				node.appendChild(textnode);
+				ul.appendChild(node);					
+			} 
+		}	
+	</script>
+</body>
+</html>

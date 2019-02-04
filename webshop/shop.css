@@ -1,0 +1,77 @@
+ header {
+    font-size: 1.5em;
+    font-family: impact;
+    color: white;
+    background: #009432;
+    text-align: center;
+    padding: 1em;
+ }
+ 
+ body {
+    font-family: Tahoma, Geneva, sans-serif;
+ }
+
+ h1 {
+    font-family: impact;
+ }
+
+ h2 {
+   font-family: impact;
+}
+ 
+#artList ul {
+   background: #EA2027 ;
+   list-style-type: none;
+   padding: 0;
+}
+ #artList li {
+    background: #EA2027;
+    padding: 10px;
+    
+}
+
+.zoekveld {
+   position: relative;
+   float: right;
+}
+.searchBox {
+   padding: 10px;
+}
+
+.searchBoxBtn {
+   border: none;
+   background: #EA2027;
+   color: white;
+}
+
+.searchBoxBtn:hover {
+   background: navy;
+   /* font-weight: bold; */
+}
+#orderBtn {
+   background: green;
+   transition: background 0.5s;
+}
+
+#orderBtn:hover {
+   background: navy;
+}
+
+#artList li:hover{
+   background: #F79F1F;
+}
+
+button {
+   border: none;
+   float: right;
+   background: #009432;
+   color: white;
+   padding: 5px 20px;
+   margin-left: 10px;
+   transition: background 0.5s;
+}
+
+button:hover{
+   background: #006266;
+   /* font-weight: bold; */
+}
