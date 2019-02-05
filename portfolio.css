@@ -1,3 +1,23 @@
+
+
+.pic {
+	height: 250px;
+	width: 250px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.grow img {
+	height: 250px;
+	width: 250px;
+	transition: all 1s ease;
+}
+
+.grow img:hover {
+	height: 265px;
+	width: 265px;
+}
+
 .mr-3 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
