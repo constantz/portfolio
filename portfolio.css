@@ -27,3 +27,7 @@
 	background-position: bottom;
 }
 
+.dropdown-item:active {
+	background-color: gray;
+}
+

@@ -17,14 +17,44 @@
     <title>Portfolio CZ</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="pdf/CVCZ2019.pdf">Curriculum Vitae</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.codegorilla.nl/">CodeGorilla<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.codegorilla.nl/bootcamp/">Bootcamp</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Portfolio
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#item1">Contactenlijst</a>
+						<a class="dropdown-item" href="#item2">Calculator</a>
+						<a class="dropdown-item" href="#item3">Kerstboom</a>
+						<a class="dropdown-item" href="#item4">Bestelformulier</a>
+						<a class="dropdown-item" href="#item5">Webshop</a>
+                    </div>
+                </li>
+            </ul>
+			
+        </div>
+    </nav>
     <div class="jumbotron">
         <h1><b>Portfolio</b></h1>
-        <p>Portfolio van Constant Zwijnenberg,<br>in ontwikkeling....</p>
+        <p>Portfolio van Constant Zwijnenberg<br>vanaf december 2018, in ontwikkeling....</p>
     </div>
     <div class="container">
-        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br>
         <ul class="list-unstyled">
-            <li class="media">
+            <li class="media" id="item1">
 				<div data-aos="fade-right" class="grow pic">
 					<a href="contactlist/index.html">
 						<img class="mr-3" src="images/contactlijst.jpg" alt="Contactlijst">
@@ -36,7 +66,7 @@
                 </div>
             </li>
             <br><br>
-            <li class="media">
+            <li class="media" id="item2">
 				<div data-aos="fade-right" class="grow pic">
 					<a href="calculator.html">
 						<img class="mr-3" src="images/calculator.jpg" alt="Calculator">
@@ -48,7 +78,7 @@
                 </div>
             </li>
             <br><br>
-            <li class="media">
+            <li class="media" id="item3">
 				<div data-aos="fade-right" class="grow pic">
 					<a href="kerstboom.html">
 						<img class="mr-3" src="images/kerstboom.jpg" alt="Kerstboom">
@@ -60,7 +90,7 @@
                 </div>
             </li>
             <br><br>
-            <li class="media">
+            <li class="media" id="item4">
 				<div data-aos="fade-right" class="grow pic">
 					<a href="tafel/tafel.php">
 						<img class="mr-3" src="images/tafel.jpg" alt="Tafel">
@@ -72,7 +102,7 @@
                 </div>
             </li>
 			<br><br>
-            <li class="media">
+            <li class="media" id="item5">
 				<div data-aos="fade-right" class="grow pic">
 					<a href="webshop/index.php">
 						<img class="mr-3" src="images/webshop.jpg" alt="Webshop">
